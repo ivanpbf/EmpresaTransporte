@@ -13,7 +13,7 @@ public class Banquero {
     int cant = 200; //cantidad "ilimitada" de rutas
     String nombre[] = new String[cant]; //matriz que guarda los nombres de pedidos
     int[][] reclamarPedido = new int[cant][cant];
-    int[][] alocarPedido = new int[cant][cant];
+    int[][] asignadoPedido = new int[cant][cant];
     int[] pedidoDisponible = new int[cant];
     int[][] pedidoRestantes = new int [cant][cant];
     int[][] pedidosBloqueados = new int [cant][cant+1];
@@ -31,14 +31,65 @@ public class Banquero {
         }
     }
     
+    public void llenarNombres(int i, String pedido){
+        nombre[i] = pedido;
+    }
+    
+    public void agregarReclamo(int i, int j, int max){
+        reclamarPedido[i][j] = max;
+    }
+    
+    public void imprimirReclamo(){
+        for(int i = 0; i < cant; i++){
+            for(int j = 0; j < cant; j++){
+                System.out.println(reclamarPedido[i][j]+" ");
+            }
+            System.out.print("\n");
+        }
+        System.out.println(" ");
+    }
+    
+    public void llenarDisponible(int i, int c){ //c es la cantidad
+        pedidoDisponible[i] = c;
+    }
     
     
+    public void solicitar(int i, int j, int c){ //c es la cantidad
+        int contigualdad = 0;
+        this.setMensaje("Se realizo la solicitud correctamente");
+        asignadoPedido[i][j] = asignadoPedido[i][j]+c;
+        pedidoDisponible[j] = pedidoDisponible[j]-c;
+        
+        //si llega a sus requerimientos maximos, se finaliza
+        for(int k =0; k < cant; k++){
+            if(reclamarPedido[i][k] == asignadoPedido[i][k]){
+                contigualdad++;
+            }
+        }
+        if(contigualdad==cant){
+            for(int k = 0; k < cant; k++){
+                pedidoDisponible[k] = pedidoDisponible[k] + asignadoPedido[i][k];
+            }
+            for(int k = 0; k < cant; k++){
+                reclamarPedido[i][k] = 0;
+                asignadoPedido[i][k] = 0;
+            }
+            contPeliminados++;
+            this.setMensaje("El pedido "+nombre[i]+" finalizo");
+            System.out.println("Se elimino el pedido");
+        }
+        
+        contPedidosRealizados++;
+    }
+           
+    
+    //gets y sets
     public int getActualBloqueados() {
         return actualBloqueados;
     }
 
-    public int[][] getAlocarPedido() {
-        return alocarPedido;
+    public int[][] getAsignadoPedido() {
+        return asignadoPedido;
     }
 
     public int getCant() {
@@ -85,8 +136,8 @@ public class Banquero {
         this.actualBloqueados = actualBloqueados;
     }
 
-    public void setAlocarPedido(int[][] alocarPedido) {
-        this.alocarPedido = alocarPedido;
+    public void setAsignadoPedido(int[][] asignarPedido) {
+        this.asignadoPedido = asignarPedido;
     }
 
     public void setCant(int cant) {
