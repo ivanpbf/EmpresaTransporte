@@ -122,14 +122,92 @@ public class Banquero {
         }
         
         //aqui verificamos que el pedido no este eliminado y lo que solicita lo requiera
-        verificacionEstado();
+        boolean simular = false;
+        simular = verificacionEstado(i,j,c);
+        if(simular){
+            //se procede a realizar la simulacion
+            asiPS[i][j] = asiPS[i][j] + c;
+            dispPS[j] = dispPS[j] - c;
+            
+            //si el pedido llega a sus requerimientos maximos se va a simular su eliminacion
+            for(int k = 0; k< cant; k++){
+                if(recPS[i][k] == asiPS[i][k]){
+                    contigualdadS++;
+                }
+            }
+            
+            if(contigualdadS == cant){
+                for(int k = 0; k< cant; k++){
+                    dispPS[k] = dispPS[k]+asiPS[i][k];
+                }
+                for(int k = 0; k < cant; k++){
+                    recPS[i][k] = 0;
+                    asiPS[i][k] = 0;
+                }
+            }
+            
+            for(int k = 0; k < cant;k++){
+                for(int l = 0; l < cant;l++){
+                    restPS[k][l] = recPS[k][l] - asiPS[k][l];
+                }
+            }
+            
+            //se buscan pedidos que solicitan cantidad menor o igual a las disponibles en simulacion
+            while(posible){
+                
+            }
+        }
+        
     }
     
-    public void verificacionEstado(){
+    public boolean verificacionEstado(int i, int j, int c){
         int estadoEliminado = 0;
         int estadoRequiere = 0;
+        for(int k = 0; k < cant; k++){
+            if(reclamarPedido[i][k] != 0){
+                estadoEliminado = 1;
+            }
+        }
+        if (reclamarPedido[i][j] != 0){
+            estadoRequiere = 1;
+        }
         
+        if(estadoEliminado ==0){
+            this.setMensaje("El pedido "+nombre[i]+" esta eliminado");
+            System.out.println("Pedido esta eliminado");
+        }
         
+        else if(estadoRequiere ==0){
+            this.setMensaje("El pedido "+nombre[i]+" no requiere del camion");
+            System.out.println("No requiere el camion");
+        }
+        
+        else if(asignadoPedido[i][j] + c > reclamarPedido[i][j]){
+            this.setMensaje("La solicitud para dicho camion excede la cantidad de requerimiento maximo");
+            System.out.println("La solicitud para dicho camion excede la cantidad de requerimiento maximo");
+        }
+        else if(c > pedidoDisponible[j] && pedidosBloqueados[i][0] != 1){
+            this.setMensaje("El pedido "+nombre[i]+" ha sido bloqueado");
+            System.out.println("Se bloqueo el pedido");
+            pedidosBloqueados[i][0] = 1;
+            pedidosBloqueados[i][j+1] = c;
+            totalBloqueados++;
+            actualBloqueados++;
+        }
+        else if(pedidosBloqueados[i][0] == 1 && 
+                (pedidosBloqueados[i][j+1] > pedidoDisponible[j] || pedidosBloqueados[i][j+1] != c || pedidosBloqueados[i][j+1] == 0)){
+            if(pedidosBloqueados[i][j+1] == 0 || c != pedidosBloqueados[i][j+1]){
+                this.setMensaje("La solicitud no es igual a la realizada al bloquearse");
+            }
+            else{
+                this.setMensaje("No hay camiones disponibles para llevar a cabo la solicitud");
+            }
+        }
+        else{
+            System.out.println("Se simula la solicitud");
+            return true;
+        }
+        return false;
     }
     
     public void Reclamacion(){
