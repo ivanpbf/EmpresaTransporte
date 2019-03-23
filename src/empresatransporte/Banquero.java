@@ -233,7 +233,23 @@ public class Banquero {
     }
     
     public void Unsafe(int i, int j, int c){
-        
+        if(pedidosBloqueados[i][0] != 1){
+            pedidosBloqueados[i][0] = 1;
+            pedidosBloqueados[i][j+1] = c;
+            totalBloqueados++;
+            actualBloqueados++;
+            for(int k = 0; k < cant; k++){
+                for(int l = 0; l < cant+1; l++){
+                    System.out.println(pedidosBloqueados[k][l]+" ");
+                }
+                System.out.println(" ");
+            }
+            this.setMensaje("El pedido "+nombre[i]+" ha sido bloqueado");
+            System.out.println("El pedido se ha bloqueado");
+        }
+        else{
+            this.setMensaje("La solicitud no cumple con los requisitos necesarios");
+        }
     }
     
     public boolean verificacionEstado(int i, int j, int c){
