@@ -16,4 +16,51 @@ public class EmpresaTransporte {
         // TODO code application logic here
     }
     
+    public int getContPedidosRealizados(){
+        return algoritmo.getContPedidosRealizados();
+    }
+    public int getContPeliminados(){
+        return algoritmo.getContPeliminados();
+    }
+    
+    public int getActualBloqueados(){
+        return algoritmo.getActualBloqueados();
+    }
+    
+    public int getTotalBloqueados(){
+        return algoritmo.getTotalBloqueados();
+    }
+    
+    public String getMensaje(){
+        return algoritmo.getMensaje();
+    }
+    
+    public void llenarNombre(int i, String pedido){
+        algoritmo.llenarNombres(i, pedido);
+    }
+    
+    public void agregarReclamo(int i, int j, int max){
+        algoritmo.agregarReclamo(i, j, max);
+    }
+    
+    public void imprimirReclamo(){
+        algoritmo.imprimirReclamo();
+    }
+    
+    public void llenarDisponible(int i, int c){
+        algoritmo.llenarDisponible(i, c);
+    }
+    
+    public void AnadirAsignado(int i, int j, int c, int Pedidos, int Camiones){
+        algoritmo.AnadirAsignado(i, j, c, Pedidos, Camiones);
+    }
+    
+    public int getCant(){
+        return algoritmo.getCant();
+    }
+    
+    public void setCant(int cant){
+        algoritmo.setCant(cant);
+    }
+
 }
