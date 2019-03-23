@@ -154,9 +154,85 @@ public class Banquero {
             
             //se buscan pedidos que solicitan cantidad menor o igual a las disponibles en simulacion
             while(posible){
+                int contVerificarExiste = 0;
+                for (int k = 0; k < Pedidos; k++) {
+                    for (int l = 0; l < Camiones; l++) {
+                        for (int n = 0; n < Camiones; n++) {
+                            if(restPS[k][n] != 0){
+                                contceros = 1;
+                            }
+                        }
+                        if(contceros == 1){
+                            if(restPS[k][l] <= dispPS[l]){
+                                contsim++;
+                            }
+                            if(contsim == Camiones){
+                                contVerificarExiste++;
+                                for(int m = 0; m < Camiones; m++){
+                                    restPS[k][m] = 0;
+                                    dispPS[m] = dispPS[m]+asiPS[k][m];
+                                }
+                            }
+                        } 
+                    }
+                    contsim = 0;
+                    contceros = 0;
+                }
                 
+                //se realiza hasta no conseguir mas pedidos, saldra del while
+                if(contVerificarExiste == 0){
+                    posible = false;
+                }
+            }
+            
+            verif = Pedidos*Camiones;
+            //si todos los pedidos cumplieron su requerimientos maximos, es safe, sino sera unsafe
+            for(int k = 0; k< Pedidos; k++){
+                for(int l = 0; l < Camiones; l++){
+                    if(restPS[k][l] == 0){
+                        cont0++;
+                    }
+                }
+            }
+            
+            if(cont0 == verif){
+                System.out.println("Estado Safe");
+                Safe(i,j,c);
+            }
+            else{
+                System.out.println("Estado Unsafe");
+                Unsafe(i,j,c);
+            }
+            
+        }
+    }
+    
+    public void Safe(int i, int j, int c){
+        //se verifica si el pedido que hizo la solicitud esta bloqueado
+        if(pedidosBloqueados[i][0] == 1){
+            //si se cumple la condicion para desbloquearse, entra
+            if(pedidosBloqueados[i][j+1] <= pedidoDisponible[j] && pedidosBloqueados[i][j+1] == c && pedidosBloqueados[i][j+1]>0){
+                pedidosBloqueados[i][0] = 0;
+                pedidosBloqueados[i][j+1] = 0;
+                actualBloqueados--;
+                solicitar(i,j,c);
+            }
+            else{
+                if(pedidosBloqueados[i][j+1] == 0 || c != pedidosBloqueados[i][j+1]){
+                    this.setMensaje("La solicitud no es igual a la realizada al bloquearse");
+                }
+                else{
+                    this.setMensaje("No hay camiones disponibles para llevar a cabo el pedido");
+                }
             }
         }
+        //sino, se hace la solicitud correspondiente
+        else{
+            solicitar(i,j,c);
+        }
+    }
+    
+    public void Unsafe(int i, int j, int c){
         
     }
     
