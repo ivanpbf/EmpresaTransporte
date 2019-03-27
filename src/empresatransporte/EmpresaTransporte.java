@@ -13,7 +13,10 @@ public class EmpresaTransporte {
 
     Banquero algoritmo = new Banquero();
     public static void main(String[] args) {
-        // TODO code application logic here
+        //OJO
+        //me equivoque y puse ruta como camion
+        //usar camion para estos metodos y banquero pero ruta en la interfaz
+        //OJO
     }
     
     public int getContPedidosRealizados(){

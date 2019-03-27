@@ -4,13 +4,19 @@
  * and open the template in the editor.
  */
 package Interfaz;
-
+import empresatransporte.EmpresaTransporte;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Ivan Leonardo R
  */
 public class Ventana extends javax.swing.JFrame {
-
+    EmpresaTransporte empresa = new EmpresaTransporte();
+    int contPedido = 0;
+    int contRuta = 0; // el equivalente a recursos
     /**
      * Creates new form Ventana
      */
@@ -60,6 +66,7 @@ public class Ventana extends javax.swing.JFrame {
         CamFaltantes.setVisible(false);
         Salida.setVisible(false);
         
+        
     }
 
     /**
@@ -71,7 +78,7 @@ public class Ventana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         IniciarPrograma = new javax.swing.JButton();
         Icono = new javax.swing.JLabel();
         NombreRuta = new javax.swing.JLabel();
@@ -86,16 +93,16 @@ public class Ventana extends javax.swing.JFrame {
         NombreID = new javax.swing.JLabel();
         IDPedido = new javax.swing.JTextField();
         NombreRutaElegir = new javax.swing.JLabel();
-        TipoDeRuta = new javax.swing.JComboBox<>();
+        TipoDeRuta = new javax.swing.JComboBox<String>();
         NombreMaxCamiones = new javax.swing.JLabel();
         CantMaxCamiones = new javax.swing.JTextField();
         AgregarPedido = new javax.swing.JButton();
         VentanaPedidos = new javax.swing.JLabel();
         NombreSolicitud = new javax.swing.JLabel();
         NombreSelecPedido = new javax.swing.JLabel();
-        TipoDePedido = new javax.swing.JComboBox<>();
+        TipoDePedido = new javax.swing.JComboBox<String>();
         NombreRutaATomar = new javax.swing.JLabel();
-        SeleccionarRuta = new javax.swing.JComboBox<>();
+        SeleccionarRuta = new javax.swing.JComboBox<String>();
         NombreCamUSar = new javax.swing.JLabel();
         CamionesSolicitados = new javax.swing.JTextField();
         SolicitarPedido = new javax.swing.JButton();
@@ -109,8 +116,8 @@ public class Ventana extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         NombreRutasResultados = new javax.swing.JLabel();
         NombrePedidosResultados = new javax.swing.JLabel();
-        RutaParaResultados = new javax.swing.JComboBox<>();
-        PedidosParaResultados = new javax.swing.JComboBox<>();
+        RutaParaResultados = new javax.swing.JComboBox<String>();
+        PedidosParaResultados = new javax.swing.JComboBox<String>();
         BuscarResultados = new javax.swing.JButton();
         CamDispRuta = new javax.swing.JTextField();
         CamMaxPorPedido = new javax.swing.JTextField();
@@ -119,7 +126,7 @@ public class Ventana extends javax.swing.JFrame {
         Salida = new javax.swing.JButton();
         VentanaResultados = new javax.swing.JLabel();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -165,6 +172,11 @@ public class Ventana extends javax.swing.JFrame {
         AgregarRuta.setBackground(new java.awt.Color(0, 255, 255));
         AgregarRuta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         AgregarRuta.setText("Agregar");
+        AgregarRuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarRutaActionPerformed(evt);
+            }
+        });
         getContentPane().add(AgregarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 90, -1));
 
         VentanaRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Colo_1.jpg"))); // NOI18N
@@ -187,7 +199,6 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(NombreRutaElegir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
 
         TipoDeRuta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        TipoDeRuta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(TipoDeRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 90, -1));
 
         NombreMaxCamiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -199,6 +210,11 @@ public class Ventana extends javax.swing.JFrame {
         AgregarPedido.setBackground(new java.awt.Color(0, 255, 255));
         AgregarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         AgregarPedido.setText("Agregar");
+        AgregarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarPedidoActionPerformed(evt);
+            }
+        });
         getContentPane().add(AgregarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, -1, -1));
 
         VentanaPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Colo_1.jpg"))); // NOI18N
@@ -215,7 +231,6 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(NombreSelecPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, -1, -1));
 
         TipoDePedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        TipoDePedido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(TipoDePedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 80, -1));
 
         NombreRutaATomar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -224,7 +239,6 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(NombreRutaATomar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, -1, -1));
 
         SeleccionarRuta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        SeleccionarRuta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(SeleccionarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 80, -1));
 
         NombreCamUSar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -236,6 +250,11 @@ public class Ventana extends javax.swing.JFrame {
         SolicitarPedido.setBackground(new java.awt.Color(0, 255, 255));
         SolicitarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SolicitarPedido.setText("Solicitar");
+        SolicitarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SolicitarPedidoActionPerformed(evt);
+            }
+        });
         getContentPane().add(SolicitarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, -1, -1));
 
         VentanaSolicitudes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Colo_1.jpg"))); // NOI18N
@@ -281,12 +300,10 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(NombrePedidosResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 560, -1, -1));
 
         RutaParaResultados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        RutaParaResultados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(RutaParaResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 600, -1, -1));
+        getContentPane().add(RutaParaResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 600, 110, -1));
 
         PedidosParaResultados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        PedidosParaResultados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(PedidosParaResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 600, -1, -1));
+        getContentPane().add(PedidosParaResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 600, 110, -1));
 
         BuscarResultados.setBackground(new java.awt.Color(0, 255, 255));
         BuscarResultados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -314,16 +331,19 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void IniciarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarProgramaActionPerformed
-        
+        if(contRuta <= 0){
+            JOptionPane.showMessageDialog(this, "Por favor introduzca al menos una ruta");
+        }
+        else{
         //Ventana de crear rutas
-        NombreRuta.setVisible(false);
-        RutaCreada.setVisible(false);
-        NombreCantidadCamion.setVisible(false);
-        CantCamionesPorRuta.setVisible(false);
-        jScrollPane2.setVisible(false);
-        ListaRutas.setVisible(false);
-        AgregarRuta.setVisible(false);
-        IniciarPrograma.setVisible(false);
+        NombreRuta.setEnabled(false);
+        RutaCreada.setEnabled(false);
+        NombreCantidadCamion.setEnabled(false);
+        CantCamionesPorRuta.setEnabled(false);
+        jScrollPane2.setEnabled(false);
+        ListaRutas.setEnabled(false);
+        AgregarRuta.setEnabled(false);
+        IniciarPrograma.setEnabled(false);
         
         
         
@@ -368,7 +388,7 @@ public class Ventana extends javax.swing.JFrame {
         UsoCamiones.setVisible(true);
         CamFaltantes.setVisible(true);
         Salida.setVisible(true);
-        
+        }
     }//GEN-LAST:event_IniciarProgramaActionPerformed
 
     private void RutaCreadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RutaCreadaActionPerformed
@@ -376,41 +396,86 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_RutaCreadaActionPerformed
 
     private void AgregarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarRutaActionPerformed
-        // TODO add your handling code here:
+        //anade los camiones
+        if(Integer.parseInt(CantCamionesPorRuta.getText()) >= 0){
+            int cant;
+            int numero = TipoDeRuta.getItemCount();
+            String nuevo = RutaCreada.getText();
+            boolean existe = false;
+            for(int i = 0; i < numero; i++){
+                if(TipoDeRuta.getItemAt(i).equals(nuevo)){
+                    existe = true;
+                    break;
+                }
+            }
+            if(!existe){
+                cant = Integer.parseInt(CantCamionesPorRuta.getText());
+                empresa.llenarDisponible(contRuta, cant);
+                TipoDeRuta.addItem(RutaCreada.getText());
+                SeleccionarRuta.addItem(RutaCreada.getText());
+                RutaParaResultados.addItem(RutaCreada.getText());
+                
+                ListaRutas.setText(ListaRutas.getText()+" se agrego "+ cant +" camiones para la ruta "+RutaCreada.getText()+ ".\n" );
+                RutaCreada.setText(null);
+                CantCamionesPorRuta.setText(null);
+                contRuta++;
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Esta ruta ya existe");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Por favor introduzca numeros validos y no negativos");
+        }
     }//GEN-LAST:event_AgregarRutaActionPerformed
 
     private void SalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalidaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_SalidaActionPerformed
 
+    private void AgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPedidoActionPerformed
+        //creando los pedidos
+        if(IDPedido.getText().isEmpty() || CantMaxCamiones.getText().isEmpty()){
+            IDPedido.setText(null);
+            CantMaxCamiones.setText(null);
+            ResultadoSolicitudes.setText("Datos invalidos, por favor ingreselos de nuevo.\n");
+        }
+        else{
+            if(Integer.parseInt(CantMaxCamiones.getText()) >= 0){
+                empresa.agregarReclamo(contPedido, TipoDeRuta.getSelectedIndex(), Integer.parseInt(CantMaxCamiones.getText()));
+                empresa.llenarNombre(contPedido, IDPedido.getText());
+                ResultadoSolicitudes.setText(ResultadoSolicitudes.getText()+" se agrego el pedido "+IDPedido.getText()+"con una cantidad maxima de "+CantMaxCamiones.getText()+" camiones.\n");
+                TipoDePedido.addItem(IDPedido.getText());
+                PedidosParaResultados.addItem(IDPedido.getText());
+                IDPedido.setText(null);
+                contPedido++;
+                CantMaxCamiones.setText(null);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Por favor no introduzca caracteres invalidos en la cantidad de camiones.");
+                CantMaxCamiones.setText(null);
+            }
+        }
+    }//GEN-LAST:event_AgregarPedidoActionPerformed
+
+    private void SolicitarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitarPedidoActionPerformed
+        //funcion para hacer solicitud de un pedido para unos camiones
+        if(Integer.parseInt(CamionesSolicitados.getText()) >= 0){
+            empresa.AnadirAsignado(TipoDePedido.getSelectedIndex(), SeleccionarRuta.getSelectedIndex(), Integer.parseInt(CamionesSolicitados.getText()), contPedido, contRuta);
+            CamionesSolicitados.setText(null);
+            ResultadoSolicitudes.setText(ResultadoSolicitudes.getText() + empresa.getMensaje() + ".\n");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Por favor no introduzca caracteres invalidos y no negativos.");
+            CamionesSolicitados.setText(null);
+        }
+    }//GEN-LAST:event_SolicitarPedidoActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ventana().setVisible(true);
