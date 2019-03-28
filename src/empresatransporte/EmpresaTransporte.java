@@ -17,6 +17,7 @@ public class EmpresaTransporte {
         //me equivoque y puse ruta como camion
         //usar camion para estos metodos y banquero pero ruta en la interfaz
         //OJO
+        //aunque creo que no hay problema?
     }
     
     public int getContPedidosRealizados(){

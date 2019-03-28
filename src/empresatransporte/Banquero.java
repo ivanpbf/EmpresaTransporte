@@ -329,6 +329,7 @@ public class Banquero {
         for(int i = 0; i < cant; i++){
             System.out.println(pedidoDisponible[i]+" ");
         }
+        System.out.println("\n");
     }
     
     public void RA(){
