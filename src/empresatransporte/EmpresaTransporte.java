@@ -79,4 +79,7 @@ public class EmpresaTransporte {
         return algoritmo.buscarAsignado(i,j);
     }
 
+    public int buscarRestante(int j){
+        return algoritmo.buscarRestante(j);
+    }
 }

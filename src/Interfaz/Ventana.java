@@ -482,6 +482,7 @@ public class Ventana extends javax.swing.JFrame {
         CamDispRuta.setText(Integer.toString(empresa.buscarDisponibles(RutaParaResultados.getSelectedIndex())));;
         CamMaxPorPedido.setText(Integer.toString(empresa.buscarReclamo(PedidosParaResultados.getSelectedIndex(), RutaParaResultados.getSelectedIndex())));
         UsoCamiones.setText(Integer.toString(empresa.buscarAsignado(PedidosParaResultados.getSelectedIndex(), RutaParaResultados.getSelectedIndex())));
+        CamFaltantes.setText(Integer.toString(empresa.buscarRestante(PedidosParaResultados.getSelectedIndex())));
     }//GEN-LAST:event_BuscarResultadosActionPerformed
 
     /**
