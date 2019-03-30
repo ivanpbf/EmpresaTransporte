@@ -98,9 +98,9 @@ public class Banquero {
             }
             contPeliminados++;
             this.setMensaje("El pedido "+nombre[i]+" finalizo");
+            contPedidosRealizados++;
             System.out.println("Se elimino el pedido.");
         }
-        contPedidosRealizados++;
         Reclamacion();
         Asignacion();
         Disponible();
