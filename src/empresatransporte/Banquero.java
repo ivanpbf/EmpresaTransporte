@@ -61,6 +61,10 @@ public class Banquero {
         return pedidoDisponible[i];
     }
     
+    public int buscarAsignado(int i, int j){
+        return asignadoPedido[i][j];
+    }
+    
     //para solicitacion de recurso
     public void solicitar(int i, int j, int c){ //c es la cantidad
         int contigualdad = 0;

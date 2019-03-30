@@ -74,5 +74,9 @@ public class EmpresaTransporte {
     public int buscarReclamo(int i, int j){
         return algoritmo.buscarReclamo(i, j);
     }
+    
+    public int buscarAsignado(int i, int j){
+        return algoritmo.buscarAsignado(i,j);
+    }
 
 }

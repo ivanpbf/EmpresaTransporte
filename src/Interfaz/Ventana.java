@@ -467,6 +467,7 @@ public class Ventana extends javax.swing.JFrame {
         //funcion para hacer solicitud de un pedido para unos camiones
         if(Integer.parseInt(CamionesSolicitados.getText()) >= 0){
             empresa.AnadirAsignado(TipoDePedido.getSelectedIndex(), SeleccionarRuta.getSelectedIndex(), Integer.parseInt(CamionesSolicitados.getText()), contPedido, contRuta);
+            //tipo de pedido siendo el id
             CamionesSolicitados.setText(null);
             ResultadoSolicitudes.setText(ResultadoSolicitudes.getText() + empresa.getMensaje() + ".\n");
         }
@@ -480,6 +481,7 @@ public class Ventana extends javax.swing.JFrame {
         //metodo que busca y muestra la informacion relacionada a la busqueda
         CamDispRuta.setText(Integer.toString(empresa.buscarDisponibles(RutaParaResultados.getSelectedIndex())));;
         CamMaxPorPedido.setText(Integer.toString(empresa.buscarReclamo(PedidosParaResultados.getSelectedIndex(), RutaParaResultados.getSelectedIndex())));
+        UsoCamiones.setText(Integer.toString(empresa.buscarAsignado(PedidosParaResultados.getSelectedIndex(), RutaParaResultados.getSelectedIndex())));
     }//GEN-LAST:event_BuscarResultadosActionPerformed
 
     /**
