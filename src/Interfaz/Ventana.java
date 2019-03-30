@@ -83,6 +83,8 @@ public class Ventana extends javax.swing.JFrame {
         IniciarPrograma = new javax.swing.JButton();
         Icono = new javax.swing.JLabel();
         NombreRuta = new javax.swing.JLabel();
+        nomb1 = new javax.swing.JLabel();
+        nomb2 = new javax.swing.JLabel();
         RutaCreada = new javax.swing.JTextField();
         NombreCantidadCamion = new javax.swing.JLabel();
         CantCamionesPorRuta = new javax.swing.JTextField();
@@ -152,6 +154,16 @@ public class Ventana extends javax.swing.JFrame {
         NombreRuta.setForeground(new java.awt.Color(255, 255, 255));
         NombreRuta.setText("Nombre de la ruta :");
         getContentPane().add(NombreRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 20));
+
+        nomb1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nomb1.setForeground(new java.awt.Color(255, 255, 255));
+        nomb1.setText("Ivan Loscher");
+        getContentPane().add(nomb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 90, 20));
+
+        nomb2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nomb2.setForeground(new java.awt.Color(255, 255, 255));
+        nomb2.setText("Ivan Rivolta");
+        getContentPane().add(nomb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 90, 20));
 
         RutaCreada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -563,5 +575,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel nomb1;
+    private javax.swing.JLabel nomb2;
     // End of variables declaration//GEN-END:variables
 }
