@@ -66,5 +66,13 @@ public class EmpresaTransporte {
     public void setCant(int cant){
         algoritmo.setCant(cant);
     }
+    
+    public int buscarDisponibles(int i){
+        return algoritmo.buscarDisponible(i);
+    }
+    
+    public int buscarReclamo(int i, int j){
+        return algoritmo.buscarReclamo(i, j);
+    }
 
 }

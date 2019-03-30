@@ -39,6 +39,10 @@ public class Banquero {
         reclamarPedido[i][j] = max;
     }
     
+    public int buscarReclamo(int i, int j){
+        return reclamarPedido[i][j];
+    }
+    
     public void imprimirReclamo(){
         for(int i = 0; i < cant; i++){
             for(int j = 0; j < cant; j++){
@@ -51,6 +55,10 @@ public class Banquero {
     
     public void llenarDisponible(int i, int c){ //c es la cantidad
         pedidoDisponible[i] = c;
+    }
+    
+    public int buscarDisponible(int i){
+        return pedidoDisponible[i];
     }
     
     //para solicitacion de recurso

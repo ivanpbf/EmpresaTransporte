@@ -308,6 +308,11 @@ public class Ventana extends javax.swing.JFrame {
         BuscarResultados.setBackground(new java.awt.Color(0, 255, 255));
         BuscarResultados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         BuscarResultados.setText("Buscar");
+        BuscarResultados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarResultadosActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 640, -1, -1));
         getContentPane().add(CamDispRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 740, 60, -1));
         getContentPane().add(CamMaxPorPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 780, 60, -1));
@@ -470,6 +475,12 @@ public class Ventana extends javax.swing.JFrame {
             CamionesSolicitados.setText(null);
         }
     }//GEN-LAST:event_SolicitarPedidoActionPerformed
+
+    private void BuscarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarResultadosActionPerformed
+        //metodo que busca y muestra la informacion relacionada a la busqueda
+        CamDispRuta.setText(Integer.toString(empresa.buscarDisponibles(RutaParaResultados.getSelectedIndex())));;
+        CamMaxPorPedido.setText(Integer.toString(empresa.buscarReclamo(PedidosParaResultados.getSelectedIndex(), RutaParaResultados.getSelectedIndex())));
+    }//GEN-LAST:event_BuscarResultadosActionPerformed
 
     /**
      * @param args the command line arguments
