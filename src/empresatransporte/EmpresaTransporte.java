@@ -13,11 +13,7 @@ public class EmpresaTransporte {
 
     Banquero algoritmo = new Banquero();
     public static void main(String[] args) {
-        //OJO
-        //me equivoque y puse ruta como camion
-        //usar camion para estos metodos y banquero pero ruta en la interfaz
-        //OJO
-        //aunque creo que no hay problema?
+
     }
     
     public int getContPedidosRealizados(){
@@ -79,7 +75,7 @@ public class EmpresaTransporte {
         return algoritmo.buscarAsignado(i,j);
     }
 
-    public int buscarRestante(int j){
-        return algoritmo.buscarRestante(j);
+    public int buscarRestante(int i, int j){
+        return algoritmo.buscarRestante(i,j);
     }
 }

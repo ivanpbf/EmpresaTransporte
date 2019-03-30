@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 /**
  *
  * @author Ivan Leonardo R
@@ -63,7 +64,7 @@ public class Ventana extends javax.swing.JFrame {
         CamDispRuta.setVisible(false);
         CamMaxPorPedido.setVisible(false);
         UsoCamiones.setVisible(false);
-        CamFaltantes.setVisible(false);
+        Finalizados.setVisible(false);
         Salida.setVisible(false);
         
         
@@ -113,6 +114,7 @@ public class Ventana extends javax.swing.JFrame {
         Resultado2 = new javax.swing.JLabel();
         Resultado3 = new javax.swing.JLabel();
         Resultado4 = new javax.swing.JLabel();
+        Resultado5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         NombreRutasResultados = new javax.swing.JLabel();
         NombrePedidosResultados = new javax.swing.JLabel();
@@ -123,6 +125,7 @@ public class Ventana extends javax.swing.JFrame {
         CamMaxPorPedido = new javax.swing.JTextField();
         UsoCamiones = new javax.swing.JTextField();
         CamFaltantes = new javax.swing.JTextField();
+        Finalizados = new javax.swing.JTextField();
         Salida = new javax.swing.JButton();
         VentanaResultados = new javax.swing.JLabel();
 
@@ -264,30 +267,35 @@ public class Ventana extends javax.swing.JFrame {
         ResultadoSolicitudes.setRows(5);
         jScrollPane1.setViewportView(ResultadoSolicitudes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 310, 130));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 360, 130));
 
         Resultado1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Resultado1.setForeground(new java.awt.Color(255, 255, 255));
         Resultado1.setText("Camiones disponibles por ruta :");
-        getContentPane().add(Resultado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 740, -1, -1));
+        getContentPane().add(Resultado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 710, -1, -1));
 
         Resultado2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Resultado2.setForeground(new java.awt.Color(255, 255, 255));
         Resultado2.setText("Cantidad max de camiones por pedido :");
-        getContentPane().add(Resultado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 780, -1, -1));
+        getContentPane().add(Resultado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 750, -1, -1));
 
         Resultado3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Resultado3.setForeground(new java.awt.Color(255, 255, 255));
         Resultado3.setText("Uso de los camiones :");
-        getContentPane().add(Resultado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 820, -1, -1));
+        getContentPane().add(Resultado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 790, -1, -1));
 
         Resultado4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Resultado4.setForeground(new java.awt.Color(255, 255, 255));
-        Resultado4.setText("Camiones que hacen falta :");
-        getContentPane().add(Resultado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 860, -1, -1));
+        Resultado4.setText("Finalizados:");
+        getContentPane().add(Resultado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 860, -1, 20));
+
+        Resultado5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Resultado5.setForeground(new java.awt.Color(255, 255, 255));
+        Resultado5.setText("Camiones que hacen falta :");
+        getContentPane().add(Resultado5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 830, -1, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 732, 10, 170));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 700, 10, 190));
 
         NombreRutasResultados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         NombreRutasResultados.setForeground(new java.awt.Color(255, 255, 255));
@@ -314,10 +322,13 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BuscarResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 640, -1, -1));
-        getContentPane().add(CamDispRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 740, 60, -1));
-        getContentPane().add(CamMaxPorPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 780, 60, -1));
-        getContentPane().add(UsoCamiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 820, 60, -1));
-        getContentPane().add(CamFaltantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 860, 60, -1));
+        getContentPane().add(CamDispRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 710, 60, -1));
+        getContentPane().add(CamMaxPorPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 750, 60, -1));
+        getContentPane().add(UsoCamiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 790, 60, -1));
+        getContentPane().add(CamFaltantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 830, 60, -1));
+
+        Finalizados.setEditable(false);
+        getContentPane().add(Finalizados, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 860, 60, -1));
 
         Salida.setBackground(new java.awt.Color(255, 102, 102));
         Salida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -391,7 +402,7 @@ public class Ventana extends javax.swing.JFrame {
         CamDispRuta.setVisible(true);
         CamMaxPorPedido.setVisible(true);
         UsoCamiones.setVisible(true);
-        CamFaltantes.setVisible(true);
+        Finalizados.setVisible(true);
         Salida.setVisible(true);
         }
     }//GEN-LAST:event_IniciarProgramaActionPerformed
@@ -447,11 +458,13 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             if(Integer.parseInt(CantMaxCamiones.getText()) >= 0){
+                
                 empresa.agregarReclamo(contPedido, TipoDeRuta.getSelectedIndex(), Integer.parseInt(CantMaxCamiones.getText()));
                 empresa.llenarNombre(contPedido, IDPedido.getText());
-                ResultadoSolicitudes.setText(ResultadoSolicitudes.getText()+" se agrego el pedido "+IDPedido.getText()+"con una cantidad maxima de "+CantMaxCamiones.getText()+" camiones.\n");
+                ResultadoSolicitudes.setText(ResultadoSolicitudes.getText()+" se agrego el pedido "+IDPedido.getText()+" con una cantidad maxima de "+CantMaxCamiones.getText()+" camiones.\n");
                 TipoDePedido.addItem(IDPedido.getText());
                 PedidosParaResultados.addItem(IDPedido.getText());
+                empresa.imprimirReclamo();
                 IDPedido.setText(null);
                 contPedido++;
                 CantMaxCamiones.setText(null);
@@ -468,6 +481,7 @@ public class Ventana extends javax.swing.JFrame {
         if(Integer.parseInt(CamionesSolicitados.getText()) >= 0){
             empresa.AnadirAsignado(TipoDePedido.getSelectedIndex(), SeleccionarRuta.getSelectedIndex(), Integer.parseInt(CamionesSolicitados.getText()), contPedido, contRuta);
             //tipo de pedido siendo el id
+            Finalizados.setText(Integer.toString(empresa.getContPedidosRealizados()));
             CamionesSolicitados.setText(null);
             ResultadoSolicitudes.setText(ResultadoSolicitudes.getText() + empresa.getMensaje() + ".\n");
         }
@@ -482,9 +496,10 @@ public class Ventana extends javax.swing.JFrame {
         CamDispRuta.setText(Integer.toString(empresa.buscarDisponibles(RutaParaResultados.getSelectedIndex())));;
         CamMaxPorPedido.setText(Integer.toString(empresa.buscarReclamo(PedidosParaResultados.getSelectedIndex(), RutaParaResultados.getSelectedIndex())));
         UsoCamiones.setText(Integer.toString(empresa.buscarAsignado(PedidosParaResultados.getSelectedIndex(), RutaParaResultados.getSelectedIndex())));
-        CamFaltantes.setText(Integer.toString(empresa.buscarRestante(PedidosParaResultados.getSelectedIndex())));
+        CamFaltantes.setText(Integer.toString(empresa.buscarRestante(RutaParaResultados.getSelectedIndex(),PedidosParaResultados.getSelectedIndex())));
     }//GEN-LAST:event_BuscarResultadosActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -492,6 +507,7 @@ public class Ventana extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                System.out.println("La cantidad esta predeterminado en 10, ver Banquero.java");
                 new Ventana().setVisible(true);
             }
         });
@@ -507,6 +523,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField CamionesSolicitados;
     private javax.swing.JTextField CantCamionesPorRuta;
     private javax.swing.JTextField CantMaxCamiones;
+    private javax.swing.JTextField Finalizados;
     private javax.swing.JTextField IDPedido;
     private javax.swing.JLabel Icono;
     private javax.swing.JButton IniciarPrograma;
@@ -528,6 +545,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel Resultado2;
     private javax.swing.JLabel Resultado3;
     private javax.swing.JLabel Resultado4;
+    private javax.swing.JLabel Resultado5;
     private javax.swing.JTextArea ResultadoSolicitudes;
     private javax.swing.JTextField RutaCreada;
     private javax.swing.JComboBox<String> RutaParaResultados;

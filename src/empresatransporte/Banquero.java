@@ -5,12 +5,14 @@
  */
 package empresatransporte;
 
+import Interfaz.Ventana;
+
 /**
  *
  * @author Ivan
  */
 public class Banquero {
-    int cant = 200; //cantidad "ilimitada" de rutas
+    int cant = 10; //cantidad 
     String nombre[] = new String[cant]; //matriz que guarda los nombres de pedidos
     int[][] reclamarPedido = new int[cant][cant];
     int[][] asignadoPedido = new int[cant][cant];
@@ -46,7 +48,7 @@ public class Banquero {
     public void imprimirReclamo(){
         for(int i = 0; i < cant; i++){
             for(int j = 0; j < cant; j++){
-                System.out.println(reclamarPedido[i][j]+" ");
+                System.out.print(reclamarPedido[i][j] + " ");
             }
             System.out.print("\n");
         }
@@ -65,8 +67,12 @@ public class Banquero {
         return asignadoPedido[i][j];
     }
     
-    public int buscarRestante(int j){
-        return pedidoDisponible[j];
+    public int buscarRestante(int i, int j){
+       int aux =  0;
+        
+       aux  = reclamarPedido[i][j] - asignadoPedido[i][j];
+        
+        return aux;
     }
     
     //para solicitacion de recurso
@@ -92,10 +98,9 @@ public class Banquero {
             }
             contPeliminados++;
             this.setMensaje("El pedido "+nombre[i]+" finalizo");
-            System.out.println("Se elimino el pedido");
+            System.out.println("Se elimino el pedido.");
         }
         contPedidosRealizados++;
-        
         Reclamacion();
         Asignacion();
         Disponible();
@@ -256,7 +261,7 @@ public class Banquero {
             actualBloqueados++;
             for(int k = 0; k < cant; k++){
                 for(int l = 0; l < cant+1; l++){
-                    System.out.println(pedidosBloqueados[k][l]+" ");
+                    System.out.print(pedidosBloqueados[k][l]+" ");
                 }
                 System.out.println(" ");
             }
@@ -286,8 +291,8 @@ public class Banquero {
         }
         
         else if(estadoRequiere ==0){
-            this.setMensaje("El pedido "+nombre[i]+" no requiere del camion");
-            System.out.println("No requiere el camion");
+            this.setMensaje("El pedido "+nombre[i]+" no tiene esa ruta asignada");
+            System.out.println("No tiene esa ruta asignada");
         }
         
         else if(asignadoPedido[i][j] + c > reclamarPedido[i][j]){
@@ -322,7 +327,7 @@ public class Banquero {
         System.out.println("Reclamacion");
         for(int i = 0; i< cant; i++){
             for(int j = 0; j < cant; j++){
-                System.out.println(reclamarPedido[i][j]+" ");
+                System.out.print(reclamarPedido[i][j] + " ");
             }
             System.out.print("\n");
         }
@@ -333,7 +338,7 @@ public class Banquero {
         System.out.println("Asignacion");
         for(int i = 0; i< cant; i++){
             for(int j = 0; j < cant; j++){
-                System.out.println(asignadoPedido[i][j]+" ");
+                System.out.print(asignadoPedido[i][j]+" ");
             }
             System.out.print("\n");
         }
@@ -343,7 +348,7 @@ public class Banquero {
     public void Disponible(){
         System.out.println("Disponible");
         for(int i = 0; i < cant; i++){
-            System.out.println(pedidoDisponible[i]+" ");
+            System.out.print(pedidoDisponible[i]+" ");
         }
         System.out.println("\n");
     }
@@ -353,9 +358,9 @@ public class Banquero {
         for(int i = 0; i< cant; i++){
             for(int j = 0; j < cant; j++){
                 pedidoRestantes[i][j] = reclamarPedido[i][j] - asignadoPedido[i][j];
-                System.out.println(pedidoRestantes[i][j]+" ");
+                System.out.print(pedidoRestantes[i][j] + " ");
             }
-            System.out.print(" ");
+            System.out.println("");
         }
         System.out.println("\n");
     }
